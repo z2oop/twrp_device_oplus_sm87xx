@@ -55,7 +55,11 @@ TARGET_BOOTLOADER_BOARD_NAME    := sun
 # Crypto
 BOARD_USES_METADATA_PARTITION   := true
 TW_INCLUDE_CRYPTO               := true
+TW_INCLUDE_CRYPTO_FBE           := true
 TW_INCLUDE_OMAPI                := true
+TW_INCLUDE_FBE_METADATA_DECRYPT := true
+BOARD_VNDK_VERSION              := current
+TW_PREPARE_DATA_MEDIA_EARLY     := true
 
 # Debug
 TARGET_USES_LOGD                := true
