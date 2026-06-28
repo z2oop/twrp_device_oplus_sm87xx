@@ -48,6 +48,15 @@ AB_OTA_PARTITIONS += \
     my_region \
     my_stock
 
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/recovery/root/vendor/lib64/libqtikeymint.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libqtikeymint.so \
+    $(LOCAL_PATH)/recovery/root/vendor/lib64/hw/android.hardware.keymaster@4.0.so:$(TARGET_COPY_OUT_VENDOR)/lib64/hw/android.hardware.keymaster@4.0.so \
+    $(LOCAL_PATH)/recovery/root/vendor/lib64/android.hardware.security.keymint-V3-ndk.so:$(TARGET_COPY_OUT_SYSTEM)/lib64/android.hardware.security.keymint-V3-ndk.so \
+    $(LOCAL_PATH)/recovery/root/vendor/lib64/android.hardware.security.rkp-V3-ndk.so:$(TARGET_COPY_OUT_SYSTEM)/lib64/android.hardware.security.rkp-V3-ndk.so \
+    $(LOCAL_PATH)/recovery/root/vendor/lib64/android.hardware.security.secureclock-V1-ndk.so:$(TARGET_COPY_OUT_SYSTEM)/lib64/android.hardware.security.secureclock-V1-ndk.so \
+    $(LOCAL_PATH)/recovery/root/vendor/lib64/android.hardware.security.sharedsecret-V1-ndk.so:$(TARGET_COPY_OUT_SYSTEM)/lib64/android.hardware.security.sharedsecret-V1-ndk.so
+
+
 # Bootloader
 PRODUCT_PLATFORM                := sun
 TARGET_BOOTLOADER_BOARD_NAME    := sun
@@ -60,6 +69,10 @@ TW_INCLUDE_OMAPI                := true
 TW_INCLUDE_FBE_METADATA_DECRYPT := true
 BOARD_VNDK_VERSION              := current
 TW_PREPARE_DATA_MEDIA_EARLY     := true
+TW_USE_FSCRYPT_POLICY           := 2
+TW_INCLUDE_KEYSTORE2            := true
+TARGET_HW_DISK_ENCRYPTION       := true
+TARGET_KEYMASTER_WAIT_FOR_QSEE  := true 
 
 # Debug
 TARGET_USES_LOGD                := true

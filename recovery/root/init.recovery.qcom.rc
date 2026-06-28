@@ -35,6 +35,20 @@ service post-boot-script /system/bin/sh -c /vendor/bin/init.kernel.post_boot-sun
     oneshot
     seclabel u:r:recovery:s0
 
+# === Keystore 2.0 服务（Android 12+ 解密必须） ===
+service keystore2 /system/bin/keystore2
+    class main
+    user keystore
+    group keystore
+    writepid /dev/cpuset/foreground/tasks
+
+# === KeyMint 4.0 HAL 服务（从你的设备 rc 中提取） ===
+service vendor.keymint-qti /vendor/bin/hw/android.hardware.security.keymint-service-qti
+    class early_hal
+    user system
+    group system drmrpc
+    seclabel u:r:recovery:s0
+
 on init
     setprop sys.usb.configfs 1
     setprop prepdecrypt.setpatch true
@@ -65,6 +79,18 @@ on property:twrp.modules.loaded=true
     umount /vendor
     symlink /firmware /vendor/firmware_mnt
     start vendor.oplus.vibrator
+
+    # === KeyMint 解密启动流程 ===
+    # 等待高通 TEE 通信接口
+    wait /dev/qseecom
+    # 启动 KeyMint 4.0 和 AuthSecret HAL
+    start vendor.keymint-qti
+    start vendor.authsecret-1-0
+    # 等待 HAL 注册完成
+    sleep 1
+    # 启动 Keystore 2.0
+    start keystore2
+
     trigger twrp_secure_element
 
 on twrp_secure_element && property:twrp.se.no_sb=false
