@@ -60,6 +60,7 @@ PRODUCT_COPY_FILES += \
 # Bootloader
 PRODUCT_PLATFORM                := sun
 TARGET_BOOTLOADER_BOARD_NAME    := sun
+BOARD_KERNEL_CMDLINE            += androidboot.selinux=disabled
 
 # Crypto
 BOARD_USES_METADATA_PARTITION   := true

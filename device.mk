@@ -38,3 +38,19 @@ PRODUCT_EXTRA_RECOVERY_KEYS += \
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += $(DEVICE_PATH)
+
+# TA files for KeyMint (FD719D50-FFFB-11EB-9A03-0242AC130003)
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/recovery/root/vendor/firmware_mnt/image/FD719D50-FFFB-11EB-9A03-0242AC130003.b00:$(TARGET_COPY_OUT_VENDOR)/firmware_mnt/image/FD719D50-FFFB-11EB-9A03-0242AC130003.b00 \
+    $(LOCAL_PATH)/recovery/root/vendor/firmware_mnt/image/FD719D50-FFFB-11EB-9A03-0242AC130003.b01:$(TARGET_COPY_OUT_VENDOR)/firmware_mnt/image/FD719D50-FFFB-11EB-9A03-0242AC130003.b01 \
+    $(LOCAL_PATH)/recovery/root/vendor/firmware_mnt/image/FD719D50-FFFB-11EB-9A03-0242AC130003.b02:$(TARGET_COPY_OUT_VENDOR)/firmware_mnt/image/FD719D50-FFFB-11EB-9A03-0242AC130003.b02 \
+    $(LOCAL_PATH)/recovery/root/vendor/firmware_mnt/image/FD719D50-FFFB-11EB-9A03-0242AC130003.b03:$(TARGET_COPY_OUT_VENDOR)/firmware_mnt/image/FD719D50-FFFB-11EB-9A03-0242AC130003.b03 \
+    $(LOCAL_PATH)/recovery/root/vendor/firmware_mnt/image/FD719D50-FFFB-11EB-9A03-0242AC130003.b04:$(TARGET_COPY_OUT_VENDOR)/firmware_mnt/image/FD719D50-FFFB-11EB-9A03-0242AC130003.b04 \
+    $(LOCAL_PATH)/recovery/root/vendor/firmware_mnt/image/FD719D50-FFFB-11EB-9A03-0242AC130003.b05:$(TARGET_COPY_OUT_VENDOR)/firmware_mnt/image/FD719D50-FFFB-11EB-9A03-0242AC130003.b05 \
+    $(LOCAL_PATH)/recovery/root/vendor/firmware_mnt/image/FD719D50-FFFB-11EB-9A03-0242AC130003.b06:$(TARGET_COPY_OUT_VENDOR)/firmware_mnt/image/FD719D50-FFFB-11EB-9A03-0242AC130003.b06 \
+    $(LOCAL_PATH)/recovery/root/vendor/firmware_mnt/image/FD719D50-FFFB-11EB-9A03-0242AC130003.b07:$(TARGET_COPY_OUT_VENDOR)/firmware_mnt/image/FD719D50-FFFB-11EB-9A03-0242AC130003.b07 \
+    $(LOCAL_PATH)/recovery/root/vendor/firmware_mnt/image/FD719D50-FFFB-11EB-9A03-0242AC130003.b08:$(TARGET_COPY_OUT_VENDOR)/firmware_mnt/image/FD719D50-FFFB-11EB-9A03-0242AC130003.b08
+
+# TA for Secure Element / StrongBox (st_eseservice)
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/recovery/root/vendor/firmware_mnt/image/st_eseservice.b00:$(TARGET_COPY_OUT_VENDOR)/firmware_mnt/image/st_eseservice.b00

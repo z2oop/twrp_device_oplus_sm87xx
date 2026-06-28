@@ -50,6 +50,8 @@ service vendor.keymint-qti /vendor/bin/hw/android.hardware.security.keymint-serv
     seclabel u:r:recovery:s0
 
 on init
+    write /sys/kernel/tee_mem/alloc 16777216   # 16MB
+    start vendor.qseecomd
     setprop sys.usb.configfs 1
     setprop prepdecrypt.setpatch true
     start vendor.boot-qti
