@@ -125,6 +125,11 @@ jobs:
         cat INFO.txt
       working-directory: device/${{ github.event.inputs.DEVICE_PATH }}
 
+    - name: Remove stale prebuilt files from recovery/root
+      run: |
+        rm -rf ~/twrp/device/oneplus/op60f0l1/recovery/root/vendor
+        rm -rf ~/twrp/device/oneplus/op60f0l1/recovery/root/system
+
     - name: Build TWRP
       run: |
         source build/envsetup.sh
