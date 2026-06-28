@@ -62,6 +62,8 @@ on property:ro.boot.usbcontroller=*
     wait /sys/class/udc/${ro.boot.usbcontroller} 1
 
 on fs
+    mount vfat /dev/block/bootdevice/by-name/bluetooth /vendor/firmware_mnt ro,shortname=lower,uid=0,gid=1000
+    mount ext4 /dev/block/bootdevice/by-name/persist /persist nosuid,nodev,noatime
     wait /dev/block/platform/soc/${ro.boot.bootdevice}
     symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
     write /proc/sys/kernel/firmware_config/force_sysfs_fallback 1
